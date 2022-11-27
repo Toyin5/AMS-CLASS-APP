@@ -5,7 +5,8 @@ import useToken from '../../hooks/useToken';
 function Login() {
     const [code, setCode] = useState("");
     const [pass, setPass] = useState(null);
-    const [error, setError] = useState("")
+    const [flag, setFlag] = useState("");
+    const [message, setMessage] = useState("")
     const { setToken } = useToken();
 
     const navigate = useNavigate();
@@ -31,26 +32,30 @@ function Login() {
                 console.log(data)
                 if (data.status === 200) {
                     //Set Token and Navigate
+                    setFlag("is-success")
+                    setMessage("Successfully registered! You'll will redirected to the app")
                     setToken(data.token)
                     localStorage.setItem(code, JSON.stringify({ "code": code, "lec": 1 }))
                     navigate("/app")
                 }
                 if (data.status === 404) {
-                    setError(data.message)
+                    setFlag("is-danger")
+                    setMessage("Error!" + data.message)
                 }
 
             }).catch((err) => {
                 console.log(err)
-                setError("An Error occured");
+                setFlag("is-danger")
+                setMessage("Error! An error occurred")
 
             })
     }
     return (
         <div>
             <form class="box" onSubmit={(e) => e.preventDefault()}>
-                <div className="notification is-danger" >
+                <div className={"notification " + flag} >
                     <button class="delete" onClick={(e) => e.preventDefault()}></button>
-                    {error}
+                    {message}
                 </div>
                 <div class="field">
                     <label class="label">Course Code</label>

@@ -10,6 +10,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { FaUser } from 'react-icons/fa';
+import Header from '../layouts/Header';
+import Footer from '../layouts/Footer';
 
 function LoginSection() {
     const [courses, setCourses] = useState([])
@@ -49,6 +51,7 @@ function LoginSection() {
 
     return (
         <div>
+            <Header />
             <Grid container>
                 <Grid item xs>
                     <Login />
@@ -84,6 +87,7 @@ function LoginSection() {
                     </List>
                 </Grid>
             </Grid>
+            <Footer />
         </div>
     )
 }

@@ -1,16 +1,15 @@
 import React from 'react'
 import Footer from '../layouts/Footer'
-import Header from '../layouts/Header'
+import Header from './Header'
 
-function About() {
+function Settings() {
     return (
         <div>
             <Header />
-            <h1>About</h1>
-            <p>lorem ipsum cjnjkfkj </p>
+            Settings
             <Footer />
         </div>
     )
 }
 
-export default About
+export default Settings

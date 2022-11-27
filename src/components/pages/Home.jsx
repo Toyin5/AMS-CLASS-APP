@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Footer from '../layouts/Footer';
+import Header from '../layouts/Header';
 import Hero from '../utils/Hero'
 function Home() {
     const token = JSON.parse(localStorage.getItem("token"))
@@ -14,9 +16,11 @@ function Home() {
 
     return (
         <div>
+            <Header />
             <div style={style} className='main content has-text-centered'>
                 <Hero className="main content has-text-centered hero" />
             </div>
+            <Footer />
         </div>
     )
 }
