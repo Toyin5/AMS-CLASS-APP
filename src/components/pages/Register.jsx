@@ -12,7 +12,6 @@ import Footer from '../layouts/Footer';
 function RegisterStudent() {
     const token = JSON.parse(localStorage.getItem("token"));
     const [students, setStudents] = useState([])
-    const url = import.meta.env.VITE_LOCAL
     const Grid = styled(MuiGrid)(({ theme }) => ({
         width: '100%',
         ...theme.typography.body2,
@@ -26,7 +25,7 @@ function RegisterStudent() {
 
     const getStudents = async () => {
         try {
-            const result = await fetch(`${url}api/get/students/${token._id}`, {
+            const result = await fetch(`https://attendanceapi.vercel.app/api/get/students/${token._id}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -41,15 +40,20 @@ function RegisterStudent() {
         }
     }
 
-    useEffect(() => {
-        const interval = setInterval(() => getStudents(), 2000);
-        return () => clearInterval(interval);
-    }, [])
 
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false)
+        getStudents()
+    };
+
+    useEffect(() => {
+        // const interval = setInterval(() => getStudents(), 2000);
+        // return () => clearInterval(interval);
+        getStudents()
+    }, [open])
     return (
         <div>
             <Header />

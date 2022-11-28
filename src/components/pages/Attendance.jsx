@@ -11,7 +11,7 @@ import Footer from '../layouts/Footer';
 
 function Attendance() {
     const token = JSON.parse(localStorage.getItem("token"));
-    const [lecture_no, setLectureNo] = useState()
+    const [lecture_no, setLectureNo] = useState(JSON.parse(localStorage.getItem(`${token._id}_lec_no`)) || null)
     const [students, setStudents] = useState([])
     const [open, setOpen] = useState(false)
 
@@ -60,6 +60,7 @@ function Attendance() {
             const data = await result.json();
             // setStudents(data.data)
             console.log(data)
+            localStorage.setItem(`${token}_lec_no`, lecture_no.toString())
             handleOpen()
             return data.data;
         } catch (err) {
@@ -85,13 +86,17 @@ function Attendance() {
                         <input class="input" type="numeric" placeholder="Enter lecture No..." onChange={(e) => setLectureNo(e.target.value)} required />
                         <button onClick={() => { initialize() }} className='button is-large is-focus is-primary is-inverted'>Generate Code</button>
 
-                        <UtilModal content={<QrCode url={`https://attendanceapi.vercel.app/api/attendance/${token._id}/${lecture_no}`} size={256} color="green" />} open={open} handleClose={handleClose} />
+                        <UtilModal content={<QrCode url={`https://attendanceapi.vercel.app/api/attendance/mark/${token._id}/${lecture_no}`} size={256} color="green" />} open={open} handleClose={handleClose} />
                     </div>
                 </Grid>
                 <Divider orientation="vertical" flexItem />
                 <Grid item xs>
                     <div style={style} className="content has-text-centered">
-                        <h4>Lecture Attendees - {students.length}</h4>
+                        {(lecture_no) ?
+                            <h4>Lecture {lecture_no}'s attendees - {students.length}</h4>
+                            :
+                            <h4>No attendance record yet</h4>
+                        }
                     </div>
                     <Divider />
                     {
