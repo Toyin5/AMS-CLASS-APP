@@ -26,15 +26,19 @@ function Utable({ ...props }) {
             const res = await result.json();
             console.log(res.data)
             setRow(res.data)
-            const arr = ["Student ID"]
-            for (let i = 0; i <= res.data.length; i++) {
-                arr.push("lec " + (i + 1))
+            const arr = ["Student ID", "Student Name"]
+            const values = Object.values(res.data[0])
+            for (let i = 2; i < values.length; i++) {
+                arr.push("lec " + (i - 1))
             }
+            arr.push("Total")
             setColumn(arr)
         } catch (err) {
             console.log(err);
         }
     }
+
+
 
     useEffect(() => {
         getTable()
@@ -55,7 +59,8 @@ function Utable({ ...props }) {
                             <TableBody>
                                 {row.map((r) => {
                                     const values = Object.values(r)
-                                    // console.log(values)
+                                    console.log(values)
+                                    values.push(calculateTotal(r).toString())
                                     return (
                                         <TableRow key={r._id}>
                                             {values.map(v => (
