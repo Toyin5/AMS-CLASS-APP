@@ -59,7 +59,6 @@ function Utable({ ...props }) {
                             <TableBody>
                                 {row.map((r) => {
                                     const values = Object.values(r)
-                                    console.log(values)
                                     values.push(calculateTotal(r).toString())
                                     return (
                                         <TableRow key={r._id}>

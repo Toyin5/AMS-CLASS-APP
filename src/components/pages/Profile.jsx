@@ -1,10 +1,10 @@
 import React from 'react'
-import { Box, Button, Container, Divider, Grid, IconButton, styled, Typography } from '@mui/material'
+import { Button, Divider, styled, Typography } from '@mui/material'
 import MuiGrid from '@mui/material/Grid';
 import Header from './Header'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../layouts/Footer';
-import { FaDownload, FaFileDownload, FaShareAlt } from 'react-icons/fa';
+import { FaFileDownload, FaFileExcel } from 'react-icons/fa';
 import Utable from '../utils/Utable';
 function Profile() {
     const Grid = styled(MuiGrid)(({ theme }) => ({
@@ -15,23 +15,6 @@ function Profile() {
         },
     }));
     const token = JSON.parse(localStorage.getItem("token"));
-
-    const download = async () => {
-        try {
-            const result = await fetch(`http://localhost:3300/api/attendance/export/class/${token._id}`, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                method: 'GET'
-            });
-            const res = await result.json();
-            console.log(res.data)
-        } catch (err) {
-            console.log(err);
-        }
-
-    }
 
     const navigate = useNavigate();
     function logout() {
@@ -57,9 +40,8 @@ function Profile() {
                     <Typography variant='h6'>
                         Export your attendance record
                     </Typography>
-                    <p>Click the button below to export your attendance record in excel or pdf file</p>
-                    <Button onClick={download}><FaFileDownload /><span>download</span></Button>
-
+                    <p>Click the button below to export your attendance record in excel <FaFileExcel /> file  </p>
+                    <Button><FaFileDownload /><a href={`https://attendanceapi.vercel.app/api/attendance/export/class/${token._id}`}>download</a></Button>
                 </Grid>
 
             </Grid>
