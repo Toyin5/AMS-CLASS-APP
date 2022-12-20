@@ -7,7 +7,6 @@ import LoginSection from './pages/LoginSection'
 import DashBoard from './pages/DashBoard'
 import RegisterStudent from './pages/Register'
 import Attendance from './pages/Attendance'
-import Settings from './pages/Settings'
 import Profile from './pages/Profile'
 import Error from './pages/Error'
 function Router() {
@@ -23,7 +22,6 @@ function Router() {
                 <Route path='/app/register' element={<RegisterStudent />} />
                 <Route path='/app/profile' element={<Profile />} />
                 <Route path='/app/attendance' element={<Attendance />} />
-                <Route path='/app/settings' element={<Settings />} />
                 <Route path='*' element={<Error />} />
 
 

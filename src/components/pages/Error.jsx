@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../layouts/Footer'
 import Header from './Header'
-
+import pic from "../../assets/error.jpg"
 function Error() {
     return (
         <>
@@ -28,18 +28,13 @@ function Error() {
                             <Typography variant='h6'>
                                 You can try opening the site on a new tab.
                             </Typography>
-                            <Link to="/app" ><Button variant='contained'>Go back HOME</Button></Link>
+                            <Link to="/app" ><Button variant='contained' color='error'>Go back HOME</Button></Link>
                         </Grid>
-                        <Grid xs={6}>
-                            <Typography variant='h1'>
-                                404
-                            </Typography>
-                            <Typography variant='h6'>
-                                Error!
-                            </Typography>
-                            <Button variant='contained'>Go back HOME</Button>
+                        <Grid item xs={12} md={5}>
+                            <img src={pic} alt="My Team" style={{
+                                width: '100%'
+                            }} />
                         </Grid>
-
                     </Grid>
                 </Container>
             </Box>

@@ -1,0 +1,29 @@
+container {
+    width: 100%;
+    display: flex;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0px 50px 0px;
+}
+
+subtitle {
+    opacity: 0.7;
+    padding-bottom: 30px;
+    font-size: 18px;
+}
+
+.gridContainer {
+    display: flex;
+    align-items: center;
+    max-width: 1300px;
+    padding: 50px;
+}
+
+.title {
+    padding-bottom: 15px;
+}
+
+.largeImage {
+    width: 100%;
+}

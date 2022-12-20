@@ -64,13 +64,6 @@ function Header() {
                         <NavLink
                             className="navbar-item"
                             activeclassname="is-active"
-                            to="/app/settings"
-                        >
-                            Settings
-                        </NavLink>
-                        <NavLink
-                            className="navbar-item"
-                            activeclassname="is-active"
                             to="/app/attendance"
                         >
                             Attendance
