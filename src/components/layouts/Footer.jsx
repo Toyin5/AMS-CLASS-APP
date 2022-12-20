@@ -6,8 +6,8 @@ export default function Footer() {
         <footer class="footer">
             <div class="content has-text-centered">
                 <p>
-                    <strong>AMS</strong> by <a href="https://github.com/Toyin5">Toyin Muhammed</a>. The source code is hosted on
-                    <a href="https://github.com/Toyin5/ams-class-app"> <FaGithub /> github</a>.
+                    <strong>AMS</strong> by <a href="https://github.com/Toyin5" target="_blank">Toyin Muhammed</a>. The source code is hosted on
+                    <a href="https://github.com/Toyin5/ams-class-app" target="_blank"> <FaGithub /> github</a>.
                 </p>
             </div>
         </footer>
