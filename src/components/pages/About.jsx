@@ -1,13 +1,12 @@
 import React from 'react'
 import Footer from '../layouts/Footer'
 import Header from '../layouts/Header'
-
+import Hero from '../utils/AboutCard'
 function About() {
     return (
         <div>
             <Header />
-            <h1>About</h1>
-            <p>lorem ipsum cjnjkfkj </p>
+            <Hero />
             <Footer />
         </div>
     )
